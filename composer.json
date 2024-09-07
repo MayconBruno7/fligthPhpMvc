@@ -1,0 +1,17 @@
+{
+    "require": {
+        "mikecao/flight": "1.0",
+        "windwalker/renderer": "2.*",
+        "illuminate/view": "4.*",
+	"illuminate/database": "*"
+    
+    }, 
+    
+    "autoload": {
+        "psr-4": {
+            "models\\": "app/models/",
+            "controllers\\": "app/controllers/"
+        }
+    }
+
+}
