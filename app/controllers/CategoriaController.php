@@ -35,7 +35,7 @@ class CategoriaController
 
     public function editar($id)
     {
-        $categoria = $this->categoriaModel->buscarPorId($id); // Crie um método buscarPorId no modelo
+        $categoria = $this->categoriaModel->buscarPorId($id);
 
         if (!$categoria) {
             Flight::notFound();
@@ -49,19 +49,18 @@ class CategoriaController
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
 
-        $atualizado = $this->categoriaModel->atualizar($id, $nome, $descricao); // Crie um método atualizar no modelo
+        $atualizado = $this->categoriaModel->atualizar($id, $nome, $descricao);
 
         if ($atualizado) {
             Flight::redirect('/categoria');
         } else {
-            // Tratar erro de atualização
             Flight::render('error', ['message' => 'Falha ao atualizar a categoria']);
         }
     }
 
     public function visualizar($id)
     {
-        $categoria = $this->categoriaModel->buscarPorId($id); // Crie um método buscarPorId no modelo
+        $categoria = $this->categoriaModel->buscarPorId($id);
 
         if (!$categoria) {
             Flight::notFound();
@@ -72,12 +71,11 @@ class CategoriaController
 
     public function excluir($id)
     {
-        $excluido = $this->categoriaModel->excluir($id); // Crie um método excluir no modelo
+        $excluido = $this->categoriaModel->excluir($id);
 
         if ($excluido) {
             Flight::redirect('/categoria');
         } else {
-            // Tratar erro de exclusão
             Flight::render('error', ['message' => 'Falha ao excluir a categoria']);
         }
     }

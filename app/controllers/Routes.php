@@ -10,14 +10,10 @@ class Routes {
     {
         $this->pdo = $pdo;
 
-        // Configuração de caminhos de visualização
         Flight::set('flight.views.path', 'app/views/');
         
-        // Pages Controller com PDO
-        // Instancie o controlador de categorias
         $categoriaController = new CategoriaController($this->pdo);
-        
-        // Defina as rotas
+
         Flight::route('GET /categoria', array($categoriaController, 'categoria'));
         Flight::route('GET /categoria/editar/@id', array($categoriaController, 'editar'));
         Flight::route('POST /categoria/atualizar/@id', array($categoriaController, 'atualizar'));
@@ -25,15 +21,21 @@ class Routes {
         Flight::route('GET /categoria/excluir/@id', array($categoriaController, 'excluir'));
         Flight::route('/categoria/adicionar', array($categoriaController, 'adicionar'));
         
+        $ProdutoController = new ProdutoController($this->pdo);
 
-        // Rota de redirecionamento padrão
+        Flight::route('GET /produto', array($ProdutoController, 'produto'));
+        Flight::route('GET /produto/editar/@id', array($ProdutoController, 'editar'));
+        Flight::route('POST /produto/atualizar/@id', array($ProdutoController, 'atualizar'));
+        Flight::route('GET /produto/visualizar/@id', array($ProdutoController, 'visualizar'));
+        Flight::route('GET /produto/excluir/@id', array($ProdutoController, 'excluir'));
+        Flight::route('/produto/adicionar', array($ProdutoController, 'adicionar'));
+
+    
         $pages = new PagesController($this->pdo);
-        Flight::route('/', array($pages, 'index')); // Página inicial
-        Flight::route('/index', array($pages, 'index')); // Página index
-        Flight::route('/sobreNos', array($pages, 'sobreNos')); // Página sobre
-        Flight::route('/contato', array($pages, 'contato')); // Página contato
-
-        
+        Flight::route('/', array($pages, 'index')); 
+        Flight::route('/index', array($pages, 'index')); 
+        Flight::route('/sobreNos', array($pages, 'sobreNos')); 
+        Flight::route('/contato', array($pages, 'contato'));
     }
 
 }

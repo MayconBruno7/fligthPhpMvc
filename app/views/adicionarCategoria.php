@@ -20,3 +20,6 @@
     </form>
 </div>
 
+<?php
+    require_once './app/views/comums/rodape.php';
+?>
